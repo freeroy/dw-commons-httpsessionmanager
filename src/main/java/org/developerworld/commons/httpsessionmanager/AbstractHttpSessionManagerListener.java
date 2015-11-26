@@ -7,11 +7,9 @@ import javax.servlet.http.HttpSessionListener;
  * 抽象Session管理器 监听器
  * 
  * @author Roy Huang
- * @version 20110226
  * 
  */
-public abstract class AbstractHttpSessionManagerListener implements
-		HttpSessionListener {
+public abstract class AbstractHttpSessionManagerListener implements HttpSessionListener {
 
 	abstract protected HttpSessionManager getHttpSessionManager();
 

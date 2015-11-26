@@ -14,7 +14,6 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * Session 监听器
  * 
  * @author Roy Huang
- * @version 20110226
  * 
  */
 public class StandardHttpSessionManagerListener extends
@@ -32,7 +31,8 @@ public class StandardHttpSessionManagerListener extends
 	 * 容器关闭
 	 */
 	public void contextDestroyed(ServletContextEvent arg0) {
-		// 不做任何操作，由spring代劳
+		// 不做其它操作，由spring代劳
+		manager=null;
 	}
 
 	/**

@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 /**
  * 会话过滤器
  * @author Roy Huang
- * @version 20110226
  *
  */
 public interface HttpSessionFinder {

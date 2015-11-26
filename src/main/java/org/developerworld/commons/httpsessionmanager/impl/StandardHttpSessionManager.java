@@ -2,8 +2,11 @@ package org.developerworld.commons.httpsessionmanager.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,9 +14,15 @@ import org.developerworld.commons.httpsessionmanager.HttpSessionFinder;
 import org.developerworld.commons.httpsessionmanager.HttpSessionKeyBuilder;
 import org.developerworld.commons.httpsessionmanager.HttpSessionManager;
 
+/**
+ * 标准会话管理器
+ * 
+ * @author Roy Huang
+ *
+ */
 public class StandardHttpSessionManager implements HttpSessionManager {
 
-	private ConcurrentHashMap<String, HttpSession> sessions;
+	private Map<String, HttpSession> sessions;
 
 	private HttpSessionKeyBuilder httpSessionKeyBuilder;
 
@@ -25,7 +34,7 @@ public class StandardHttpSessionManager implements HttpSessionManager {
 
 	public void init() {
 		httpSessionKeyBuilder = new StandardHttpSessionKeyBuilder();
-		sessions = new ConcurrentHashMap<String, HttpSession>();
+		sessions = new HashMap<String, HttpSession>();
 	}
 
 	private String getSessionKey(HttpSession session) {
@@ -66,8 +75,10 @@ public class StandardHttpSessionManager implements HttpSessionManager {
 
 	public List<HttpSession> getSessions(HttpSessionFinder finder) {
 		List<HttpSession> rst = new ArrayList<HttpSession>();
-		Collection<HttpSession> _sessions = sessions.values();
-		for (HttpSession session : _sessions) {
+		Iterator<Entry<String, HttpSession>> iterator = sessions.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Entry<String, HttpSession> entry = iterator.next();
+			HttpSession session = entry.getValue();
 			if (session != null && (finder == null || finder.match(session)))
 				rst.add(session);
 		}

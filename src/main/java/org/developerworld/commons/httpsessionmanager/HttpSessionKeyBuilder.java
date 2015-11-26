@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 /**
  * session健构造器
  * @author Roy Huang
- * @version 20140611
  *
  */
 public interface HttpSessionKeyBuilder {

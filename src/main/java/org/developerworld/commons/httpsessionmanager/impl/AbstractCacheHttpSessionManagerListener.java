@@ -12,7 +12,6 @@ import org.developerworld.commons.httpsessionmanager.HttpSessionManager;
  * Session 监听器
  * 
  * @author Roy Huang
- * @version 20110226
  * 
  */
 public abstract class AbstractCacheHttpSessionManagerListener extends

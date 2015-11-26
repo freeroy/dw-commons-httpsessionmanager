@@ -28,7 +28,7 @@ public interface HttpSessionManager{
 	 * 删除session
 	 * @param session
 	 */
-	public void removeSession(final HttpSession session);
+	public void removeSession(HttpSession session);
 
 	/**
 	 * 删除session
